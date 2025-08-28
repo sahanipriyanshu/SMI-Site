@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, Award, Clock, CheckCircle } from 'lucide-react';
 
-const About = () => {
+function About() {
     const stats = [
         { icon: Award, number: '15+', label: 'Years Experience' },
         { icon: CheckCircle, number: '200+', label: 'Projects Completed' },
@@ -55,15 +55,18 @@ const About = () => {
             <section className="py-16 bg-blue-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        {stats.map((stat, index) => (
-                            <div key={index} className="group">
-                                <div className="inline-flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <stat.icon className="h-6 w-6 text-gray-900" />
+                        {stats.map((stat, index) => {
+                            const Icon = stat.icon;
+                            return (
+                                <div key={index} className="group">
+                                    <div className="inline-flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-lg mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <Icon className="h-6 w-6 text-gray-900" />
+                                    </div>
+                                    <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                                    <div className="text-blue-200 font-medium">{stat.label}</div>
                                 </div>
-                                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                                <div className="text-blue-200 font-medium">{stat.label}</div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
